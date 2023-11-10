@@ -1,6 +1,9 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+import CarManager from './CarsManager'
 
-const container = document.getElementById("app");
-const root = createRoot(container);
-root.render(<App />);
+const App = () => {
+    return <CarManager />
+}
+
+ReactDOM.render(<App/>, document.getElementById("app"));

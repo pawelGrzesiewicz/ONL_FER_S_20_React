@@ -1,21 +1,21 @@
 import React, {useState} from 'react'
 
 
-const AddCar = ({getCars, setCars}) => {
+const AddCar = ({id, data, getCars, setCars}) => {
 
     const [form, setForm] = useState({
-        name: "",
-        brand: "",
-        hp: "",
-        type: ""
+        name: data.name,
+        brand: data.brand,
+        hp: data.engine.hp,
+        type: data.engine.type
     })
 
     const addCar = (car) => {
-        fetch(`http://localhost:3000/cars`, {
-            method: "POST",
+        fetch(`http://localhost:3000/cars/${id}`, {
+            method: "PUT",
             body: JSON.stringify(car),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         })
             .then((res) => res.json())
@@ -67,7 +67,7 @@ const AddCar = ({getCars, setCars}) => {
                 HP
                 <input type="text" name="hp" value={form.hp} onChange={handleChange} />
             </label>
-            <button>Dodaj</button>
+            <button>Edytuj</button>
         </form>
     )
 }
